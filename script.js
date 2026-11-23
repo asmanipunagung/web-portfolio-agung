@@ -73,19 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 3. Dropdown Category Filtering (User Preference: Dropdown over Sliding Tabs)
-  const categoryFilter = document.getElementById('project-category-filter');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  categoryFilter?.addEventListener('change', (e) => {
-    const selected = e.target.value;
-    projectCards.forEach((card) => {
-      const match = selected === 'all' || card.dataset.category === selected;
-      card.style.display = match ? 'flex' : 'none';
-    });
-  });
-
-  // 4. Robust Copy Email with Non-HTTPS / LAN Fallback
+  // 3. Robust Copy Email with Non-HTTPS / LAN Fallback
   const setupCopyEmail = (btnId, feedbackId) => {
     const btn = document.getElementById(btnId);
     const feedback = document.getElementById(feedbackId);

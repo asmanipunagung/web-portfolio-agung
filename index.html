@@ -67,8 +67,6 @@
             <li><a href="#about" class="nav-link"><span class="nav-dot"></span>Profil &amp; Riset</a></li>
             <li><a href="#services" class="nav-link"><span class="nav-dot"></span>Bidang Kepakaran</a></li>
             <li><a href="#education" class="nav-link"><span class="nav-dot"></span>Pendidikan</a></li>
-            <li><a href="#work" class="nav-link"><span class="nav-dot"></span>Katalog Sistem</a></li>
-            <li><a href="#publications" class="nav-link"><span class="nav-dot"></span>Buku &amp; Kurikulum</a></li>
             <li><a href="#contact" class="nav-link"><span class="nav-dot"></span>Kontak &amp; Kolaborasi</a></li>
           </ul>
         </nav>
@@ -112,15 +110,15 @@
           </div>
 
           <div class="hero-actions">
-            <a href="#work" class="btn btn-primary">
-              Lihat Katalog Sistem
+            <a href="#contact" class="btn btn-primary">
+              Jalin Kontak &amp; Kolaborasi
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
             <button id="copy-email-hero-btn" class="btn btn-secondary" data-email="agung.purwanto@unda.ac.id" aria-label="Salin Alamat Email">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Salin Email</span>
             </button>
-            <a href="#publications" class="btn btn-ghost">Buku &amp; Kurikulum</a>
+            <a href="#services" class="btn btn-ghost">Bidang Kepakaran</a>
           </div>
 
           <div id="hero-copy-feedback" class="copy-feedback-banner" aria-live="polite"></div>
@@ -300,220 +298,7 @@
         </div>
       </section>
 
-      <!-- SECTION: WORK / KATALOG SISTEM (WITH DROPDOWN FILTERING) -->
-      <section id="work" class="content-section section-alt">
-        <div class="section-container">
-          <header class="section-head">
-            <span class="section-badge">Artefak Rekayasa</span>
-            <h2 class="section-title">Katalog Sistem Terverifikasi</h2>
-            <p class="section-subtitle">
-              Setiap sistem di bawah ini dibangun dengan standar rekayasa nyata, modularitas tinggi, dan pengujian berbasis bukti.
-            </p>
-          </header>
-
-          <!-- Standard-Compliant Dropdown Filter (NO HORIZONTAL SLIDING TABS) -->
-          <div class="filter-controls">
-            <label for="project-category-filter" class="filter-label">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-              Filter Berdasarkan Kategori:
-            </label>
-            <div class="select-wrapper">
-              <select id="project-category-filter" class="custom-select" aria-label="Filter Kategori Proyek">
-                <option value="all">Semua Kategori Sistem (5 Proyek)</option>
-                <option value="edtech">EdTech &amp; Pembelajaran Adaptif</option>
-                <option value="iot">Internet of Things &amp; Hardware</option>
-                <option value="governance">Tata Kelola &amp; Rekayasa Balik</option>
-                <option value="ai-tools">AI Tools &amp; Asisten Cerdas</option>
-              </select>
-              <div class="select-chevron" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Cards Grid -->
-          <div id="project-cards-container" class="card-grid col-2">
-
-            <!-- Card 1: PAK Adaptive -->
-            <article class="project-card" data-category="edtech">
-              <div class="project-card-header">
-                <div class="badge-row">
-                  <span class="status-badge badge-live">Live di Vercel</span>
-                  <span class="category-badge">EdTech / DSRM</span>
-                </div>
-                <h3 class="project-title">PAK-Adaptive Learning Platform</h3>
-              </div>
-              <p class="project-desc">
-                Sistem pembelajaran adaptif pergulatan moral berbasis <em>Four Component Model</em> dan skenario dilema etika Kohlberg. Dilengkapi triangulasi data ekologis siswa, guru, dan orang tua dengan analitik inferensial.
-              </p>
-              <div class="project-specs">
-                <span class="spec-item">Node.js Express (Serverless Safe)</span>
-                <span class="spec-item">Supabase Cloud PostgreSQL</span>
-                <span class="spec-item">TDD Suite Terverifikasi</span>
-              </div>
-              <div class="project-footer">
-                <span class="project-meta-info">Port: Cloud / 3005</span>
-                <span class="project-status-text">Status: Produksi &amp; Uji Coba</span>
-              </div>
-            </article>
-
-            <!-- Card 2: Smart EWS IoT -->
-            <article class="project-card" data-category="iot">
-              <div class="project-card-header">
-                <div class="badge-row">
-                  <span class="status-badge badge-active">Operasional Lokal</span>
-                  <span class="category-badge">IoT &amp; Telemetri</span>
-                </div>
-                <h3 class="project-title">Smart Warehouse EWS IoT</h3>
-              </div>
-              <p class="project-desc">
-                Sistem peringatan dini hidrologi dan pemantauan gudang berbasis kluster sensor otomatis. Mengintegrasikan sensor ultrasonik, kelembaban, dan telemetri berkala MQTT dengan ambang batas bahaya multi-level.
-              </p>
-              <div class="project-specs">
-                <span class="spec-item">ESP32 Telemetry Engine</span>
-                <span class="spec-item">MQTT Broker &amp; Webhook</span>
-                <span class="spec-item">Dashboard Real-time Express</span>
-              </div>
-              <div class="project-footer">
-                <span class="project-meta-info">Port: 3003 (Lokal)</span>
-                <span class="project-status-text">Status: Prototip Terkalibrasi</span>
-              </div>
-            </article>
-
-            <!-- Card 3: Nusabot IoT Platform -->
-            <article class="project-card" data-category="iot">
-              <div class="project-card-header">
-                <div class="badge-row">
-                  <span class="status-badge badge-active">Prototipe CAD</span>
-                  <span class="category-badge">Hardware &amp; Arsitektur</span>
-                </div>
-                <h3 class="project-title">Nusabot IoT Platform</h3>
-              </div>
-              <p class="project-desc">
-                Platform pembelajaran IoT komprehensif yang dirancang dengan arsitektur <em>Deep Modules</em> dan antarmuka CAD terpadu untuk visualisasi jalur rangkaian mikrokontroler pemula hingga tingkat lanjut.
-              </p>
-              <div class="project-specs">
-                <span class="spec-item">ESP32 / ESP8266 Toolchain</span>
-                <span class="spec-item">Modular Node Architecture</span>
-                <span class="spec-item">Interactive Wiring Inspector</span>
-              </div>
-              <div class="project-footer">
-                <span class="project-meta-info">Port: 8080 (Lokal)</span>
-                <span class="project-status-text">Status: Buku Panduan + Modul</span>
-              </div>
-            </article>
-
-            <!-- Card 4: Tiny Pocket AI Assistant -->
-            <article class="project-card" data-category="ai-tools">
-              <div class="project-card-header">
-                <div class="badge-row">
-                  <span class="status-badge badge-hardware">Hardware Freeform</span>
-                  <span class="category-badge">AI Saku &amp; Audio</span>
-                </div>
-                <h3 class="project-title">K.I.N.A.N.T.I Pocket Assistant</h3>
-              </div>
-              <p class="project-desc">
-                Hardware pendamping saku mandiri dengan mikrokontroler ESP32-C3 SuperMini, layar OLED 0.96", mikrofon I2S INMP441, dan amplifier MAX98357A yang dirakit di atas rangka kawat kuningan 1.0mm bebas PCB.
-              </p>
-              <div class="project-specs">
-                <span class="spec-item">ESP32-C3 RISC-V SoC</span>
-                <span class="spec-item">I2S Audio Pipeline</span>
-                <span class="spec-item">Edge-TTS &amp; Omniroute Bridge</span>
-              </div>
-              <div class="project-footer">
-                <span class="project-meta-info">Port: 8443 / 20128</span>
-                <span class="project-status-text">Status: Fase Pengadaan Komponen</span>
-              </div>
-            </article>
-
-            <!-- Card 5: IKD Suite & GL III Reborn -->
-            <article class="project-card" data-category="governance">
-              <div class="project-card-header">
-                <div class="badge-row">
-                  <span class="status-badge badge-research">Riset &amp; Audit</span>
-                  <span class="category-badge">Audit TI / Keamanan</span>
-                </div>
-                <h3 class="project-title">IKD Suite &amp; GL III Reborn</h3>
-              </div>
-              <p class="project-desc">
-                Analisis tata kelola identitas kependudukan digital dan toolchain rekayasa balik (REA) untuk evaluasi keamanan antarmuka, deteksi celah logika, dan pematuhan privasi data sesuai UU PDP.
-              </p>
-              <div class="project-specs">
-                <span class="spec-item">Reverse Engineering Suite</span>
-                <span class="spec-item">ISO 27001 Mapping</span>
-                <span class="spec-item">Automated Traffic Inspector</span>
-              </div>
-              <div class="project-footer">
-                <span class="project-meta-info">Port: 3002 &amp; 3004</span>
-                <span class="project-status-text">Status: Audit Eksploratif</span>
-              </div>
-            </article>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 8: PUBLICATIONS & BUKU AJAR -->
-      <section id="publications" class="content-section">
-        <div class="section-container">
-          <header class="section-head">
-            <span class="section-badge">Publikasi &amp; Buku</span>
-            <h2 class="section-title">Karya Tulis &amp; Kurikulum Standar</h2>
-          </header>
-
-          <div class="pub-grid">
-            <div class="pub-card">
-              <div class="pub-type-badge">Buku Ajar IKAPI &mdash; 182 Halaman</div>
-              <h3 class="pub-title">Tata Kelola Teknologi Informasi: Teori, Kerangka Kerja COBIT, dan Implementasi Nyata</h3>
-              <p class="pub-meta">
-                <strong>Penerbit:</strong> Mitra Edukasi L2T (No. Anggota IKAPI: 052/SBA/2024) &bull; Format A5 Cambria Standar Dikti
-              </p>
-              <p class="pub-desc">
-                Buku rujukan perkuliahan mata kuliah SIPT2G14 yang mengulas integrasi strategis antara sasaran bisnis dengan sasaran TI menggunakan pendekatan COBIT 2019, ITIL 4, dan studi kasus instansi pendidikan regional.
-              </p>
-              <div class="pub-tags">
-                <span class="pub-tag">Mata Kuliah SIPT2G14</span>
-                <span class="pub-tag">Kolaborasi: Serika Zai, M.Pd.</span>
-                <span class="pub-tag">IKAPI Terdaftar</span>
-              </div>
-            </div>
-
-            <div class="pub-card">
-              <div class="pub-type-badge">Buku Ajar IKAPI &mdash; 140 Halaman</div>
-              <h3 class="pub-title">Perencanaan Strategis &amp; Rekayasa Sistem: Pendekatan Komputasi Berkelanjutan</h3>
-              <p class="pub-meta">
-                <strong>Penerbit:</strong> Mitra Edukasi L2T &bull; Dilengkapi 24 Diagram Vektor TikZ Zero-Error
-              </p>
-              <p class="pub-desc">
-                Pedoman komprehensif mata kuliah SIPT4G17 yang menjabarkan metode Ward &amp; Peppard, McFarland Strategic Grid, serta transformasi kebutuhan bisnis ke arsitektur modul perangkat lunak teruji.
-              </p>
-              <div class="pub-tags">
-                <span class="pub-tag">Mata Kuliah SIPT4G17</span>
-                <span class="pub-tag">24 TikZ Diagrams</span>
-                <span class="pub-tag">Penerbit Mitra L2T</span>
-              </div>
-            </div>
-
-            <div class="pub-card">
-              <div class="pub-type-badge">Kerangka Kurikulum Nasional</div>
-              <h3 class="pub-title">Audit &amp; Desain Kurikulum OBE Program Studi Sistem Informasi UNDA</h3>
-              <p class="pub-meta">
-                <strong>Dokumentasi:</strong> Paket Standar RPS OBE 6 Mata Kuliah Inti &amp; Modul MBKM Magang Industri
-              </p>
-              <p class="pub-desc">
-                Rancangan pembelajaran semester yang mematuhi rumus beban waktu SN-Dikti secara matematis (PB/PT/KM), pemetaan taksonomi Bloom tingkat tinggi (&ge; C4), serta evaluasi portofolio mahasiswa berbasis rubrik objektif.
-              </p>
-              <div class="pub-tags">
-                <span class="pub-tag">Standar SN-Dikti</span>
-                <span class="pub-tag">Taksonomi C4-C6</span>
-                <span class="pub-tag">6 MK Inti Sisfo</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION 9: CONTACT -->
+      <!-- SECTION: CONTACT -->
       <section id="contact" class="content-section section-alt">
         <div class="section-container">
           <header class="section-head">
