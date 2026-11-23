@@ -1,13 +1,13 @@
-# Portofolio Akademik & Rekayasa — Agung Purwanto, M.Kom.
+# Bento Studio & Portofolio — Agung Purwanto, M.Kom.
 
-Website portofolio pribadi akademisi dan perekayasa sistem informasi di Universitas Darwan Ali (UNDA), Sampit. 
+Website portofolio pribadi akademisi dan perekayasa sistem informasi di Universitas Darwan Ali (UNDA), Sampit, dipadukan dengan kurasi hobi *toy photography* dan koleksi diecast/Gunpla.
 
-Dirancang mengadopsi arsitektur tata letak **Colorlib Jackson** (fixed sticky sidebar di sisi kiri, alur konten editorial di sisi kanan, serta menu off-canvas responsif pada layar sentuh/mobile), dipadukan dengan standar desain **Editorial Academic Humanist**:
+Mengadopsi tata letak modern **Bento Studio Grid** (modular 12-kolom responsif tanpa sidebar kaku), dipadukan dengan standar desain **Editorial Academic Humanist**:
 - **Tipografi**: Display Serif (*Newsreader*), Grotesque Sans (*Plus Jakarta Sans*), Monospace (*JetBrains Mono*).
 - **Palet Warna**: Warm ivory paper & bronze accent (Light mode), deep obsidian slate & warm amber gold (Dark mode).
-- **Interaksi**: Navigasi scrollspy terintegrasi, tombol salin email instan, dan formulir pesan langsung.
+- **Struktur Bento**: Hero Bio, Profil Identitas, 4 Pilar Riset, Kurasi Diecast/Gunpla Makro, Timeline Pendidikan, Perkakas Meja Kerja (*The Workbench*), Rangkuman Metrik, dan Formulir Kontak.
 - **Keandalan**: Tombol salin email dengan pengaman non-HTTPS/LAN fallback, serta pergantian tema berbasis `localStorage`.
-- **Stack**: Zero-dependency (Pure HTML5 + Modern CSS + Vanilla JS), beban muat <100ms.
+- **Stack**: Zero-dependency (Pure HTML5 + Modern CSS Grid + Vanilla JS), beban muat <100ms.
 
 ---
 
@@ -15,9 +15,9 @@ Dirancang mengadopsi arsitektur tata letak **Colorlib Jackson** (fixed sticky si
 
 ```
 .
-├── index.html       # Markup semantik seluruh bagian portofolio
-├── style.css        # Tata letak sidebar Jackson, responsivitas, dan token tema
-├── script.js        # Scrollspy, pengalih tema localStorage, dan penanganan salin email
+├── index.html       # Markup grid modular Bento Studio
+├── style.css        # Tata letak CSS Grid 12-kolom, token tema, dan responsivitas
+├── script.js        # Pengalih tema, salin email aman LAN, dan navigasi aktif
 ├── vercel.json      # Konfigurasi keamanan dan deployment Vercel
 └── README.md        # Dokumentasi teknis
 ```
@@ -25,8 +25,6 @@ Dirancang mengadopsi arsitektur tata letak **Colorlib Jackson** (fixed sticky si
 ---
 
 ## 🚀 Menjalankan Lokal
-
-Jalankan server HTTP lokal sederhana pada port yang diinginkan (misal port 3008):
 
 ```bash
 # Menggunakan Python

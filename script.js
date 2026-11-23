@@ -1,5 +1,5 @@
 /**
- * Academic Faculty Portfolio — Vanilla JavaScript
+ * Bento Studio Portfolio — Vanilla JavaScript
  * Zero-dependency, lightweight, performant script
  * Agung Purwanto, M.Kom. | Universitas Darwan Ali
  */
@@ -7,8 +7,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Theme Management (Light / Dark with localStorage)
   const htmlRoot = document.documentElement;
-  const themeToggleDesktop = document.getElementById('theme-toggle');
-  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+  const themeToggle = document.getElementById('theme-toggle');
   const themeText = document.getElementById('theme-text');
 
   const getSavedTheme = () => {
@@ -19,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const applyTheme = (theme) => {
     if (theme === 'dark') {
       htmlRoot.setAttribute('data-theme', 'dark');
-      if (themeText) themeText.textContent = 'Mode Gelap';
+      if (themeText) themeText.textContent = 'Gelap';
     } else {
       htmlRoot.removeAttribute('data-theme');
-      if (themeText) themeText.textContent = 'Mode Terang';
+      if (themeText) themeText.textContent = 'Terang';
     }
     localStorage.setItem('ap-theme', theme);
   };
@@ -33,47 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   applyTheme(getSavedTheme());
-  themeToggleDesktop?.addEventListener('click', toggleTheme);
-  themeToggleMobile?.addEventListener('click', toggleTheme);
+  themeToggle?.addEventListener('click', toggleTheme);
 
-  // 2. Mobile Sidebar Navigation & Backdrop
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const sidebar = document.getElementById('sidebar');
-  const mobileOverlay = document.getElementById('mobile-overlay');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  const openMobileNav = () => {
-    sidebar?.classList.add('open');
-    mobileOverlay?.classList.add('active');
-    mobileMenuBtn?.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeMobileNav = () => {
-    sidebar?.classList.remove('open');
-    mobileOverlay?.classList.remove('active');
-    mobileMenuBtn?.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  };
-
-  mobileMenuBtn?.addEventListener('click', () => {
-    const isOpen = sidebar?.classList.contains('open');
-    if (isOpen) closeMobileNav();
-    else openMobileNav();
-  });
-
-  mobileOverlay?.addEventListener('click', closeMobileNav);
-
-  // Close mobile nav when clicking any nav link
-  navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 991) {
-        closeMobileNav();
-      }
-    });
-  });
-
-  // 3. Robust Copy Email with Non-HTTPS / LAN Fallback
+  // 2. Robust Copy Email with Non-HTTPS / LAN Fallback
   const setupCopyEmail = (btnId, feedbackId) => {
     const btn = document.getElementById(btnId);
     const feedback = document.getElementById(feedbackId);
@@ -105,28 +66,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  setupCopyEmail('copy-email-hero-btn', 'hero-copy-feedback');
+  setupCopyEmail('copy-email-btn', 'copy-feedback');
   setupCopyEmail('copy-email-contact-btn', 'contact-copy-feedback');
 
-  // 5. Scrollspy Navigation Indicator
-  const sections = document.querySelectorAll('.content-section');
-  const updateScrollspy = () => {
-    const scrollPos = window.scrollY + 120;
-    sections.forEach((section) => {
+  // 3. Topbar Nav Chip Active State on Scroll
+  const navChips = document.querySelectorAll('.nav-chip');
+  const targetSections = ['about', 'research', 'toys', 'education', 'contact'].map(id => document.getElementById(id)).filter(Boolean);
+
+  const updateActiveNav = () => {
+    const scrollPos = window.scrollY + 140;
+    targetSections.forEach(section => {
       const top = section.offsetTop;
       const height = section.offsetHeight;
       const id = section.getAttribute('id');
       if (scrollPos >= top && scrollPos < top + height) {
-        navLinks.forEach((link) => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-          }
+        navChips.forEach(chip => {
+          const match = chip.getAttribute('href') === `#${id}`;
+          chip.style.backgroundColor = match ? 'var(--bg-subtle)' : '';
+          chip.style.color = match ? 'var(--text-primary)' : '';
+          chip.style.fontWeight = match ? '600' : '500';
         });
       }
     });
   };
 
-  window.addEventListener('scroll', updateScrollspy, { passive: true });
-  updateScrollspy();
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
 });
