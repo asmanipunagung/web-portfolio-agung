@@ -92,4 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', updateActiveNav, { passive: true });
   updateActiveNav();
+
+  // 4. Retro Game Boy Hero Console Interactive Menu
+  const gbDesc = document.getElementById('gb-desc');
+  const gbMenuBtns = document.querySelectorAll('.gb-menu button');
+  gbMenuBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      gbMenuBtns.forEach(b => b.setAttribute('aria-pressed', 'false'));
+      btn.setAttribute('aria-pressed', 'true');
+      if (gbDesc && btn.dataset.t) {
+        gbDesc.textContent = btn.dataset.t;
+      }
+    });
+  });
 });
