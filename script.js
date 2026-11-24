@@ -1,7 +1,7 @@
 /**
  * Bento Studio Portfolio — Vanilla JavaScript
  * Zero-dependency, lightweight, performant script
- * Agung Purwanto | Universitas Darwan Ali
+ * Agung Purwanto | Bento Studio & Portfolio
  */
 
 document.addEventListener('DOMContentLoaded', () => {
