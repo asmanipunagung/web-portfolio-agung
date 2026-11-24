@@ -1,6 +1,6 @@
 # Bento Studio & Portofolio — Agung Purwanto
 
-Website portofolio pribadi akademisi dan perekayasa sistem informasi di Universitas Darwan Ali (UNDA), Sampit, dipadukan dengan kurasi hobi *toy photography* dan koleksi diecast/Gunpla.
+Website portofolio pribadi dosen (*lecturer*) dan perekayasa sistem informasi di Universitas Darwan Ali (UNDA), Sampit, dipadukan dengan kurasi hobi *toys enthusiast* (diecast/Gunpla).
 
 Mengadopsi tata letak modern **Bento Studio Grid** (modular 12-kolom responsif tanpa sidebar kaku), dipadukan dengan standar desain **Editorial Academic Humanist**:
 - **Tipografi**: Display Serif (*Newsreader*), Grotesque Sans (*Plus Jakarta Sans*), Monospace (*JetBrains Mono*).
