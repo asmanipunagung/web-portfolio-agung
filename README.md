@@ -1,4 +1,4 @@
-# Bento Studio & Portofolio — Agung Purwanto, M.Kom.
+# Bento Studio & Portofolio — Agung Purwanto
 
 Website portofolio pribadi akademisi dan perekayasa sistem informasi di Universitas Darwan Ali (UNDA), Sampit, dipadukan dengan kurasi hobi *toy photography* dan koleksi diecast/Gunpla.
 
