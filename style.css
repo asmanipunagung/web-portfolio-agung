@@ -126,16 +126,16 @@ button, input, select, textarea {
 .topbar {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   background-color: var(--bg-surface);
   border-bottom: 3px solid var(--border-color);
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 0 var(--border-color);
   padding: 0.75rem 1.5rem;
   transition: background-color var(--transition-base);
 }
 
 [data-theme="dark"] .topbar {
-  background-color: rgba(14, 16, 20, 0.92);
+  background-color: var(--bg-surface);
 }
 
 .topbar-inner {
@@ -169,6 +169,26 @@ button, input, select, textarea {
   justify-content: center;
 }
 
+.battery-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 0.45rem;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  padding: 0 4px;
+}
+
+.battery-led {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #E5483A;
+  box-shadow: 0 0 6px #E5483A;
+}
+
 .brand-text {
   display: flex;
   flex-direction: column;
@@ -197,19 +217,22 @@ button, input, select, textarea {
 
 .nav-chip {
   font-family: var(--font-display);
-  padding: 0.4rem 0.65rem;
+  padding: 0.45rem 0.75rem;
   font-size: 0.55rem;
   letter-spacing: 0.5px;
-  color: var(--text-secondary);
-  border-radius: var(--radius-sm);
-  border: 1px solid transparent;
+  color: var(--text-primary);
+  background-color: var(--bg-subtle);
+  border: 2px solid var(--border-color);
+  border-radius: 999px;
+  box-shadow: 0 2px 0 var(--border-color);
   transition: all var(--transition-fast);
 }
 
 .nav-chip:hover {
-  color: var(--text-primary);
-  background-color: var(--bg-subtle);
-  border-color: var(--border-color);
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  border-color: #5C1834;
+  box-shadow: 0 2px 0 #5C1834;
 }
 
 .topbar-actions {
@@ -327,6 +350,20 @@ button, input, select, textarea {
 /* 5. Bento Card 1: Hero Bio */
 .bento-hero {
   justify-content: space-between;
+  background-color: var(--gb-lcd);
+  border: 3px solid var(--gb-lcd-dim);
+  border-radius: 12px 12px 42px 12px;
+  box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.15), 0 6px 0 var(--border-color);
+  background-image: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0 1px, transparent 1px 3px);
+  color: var(--gb-lcd-ink);
+}
+
+.bento-hero .hero-title {
+  color: var(--gb-lcd-ink);
+}
+
+.bento-hero .hero-text {
+  color: var(--gb-lcd-ink);
 }
 
 .card-badge-row {
@@ -342,9 +379,9 @@ button, input, select, textarea {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--accent-primary);
-  background-color: var(--accent-subtle);
-  border: 2px solid var(--accent-border);
+  color: var(--gb-lcd-ink);
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--gb-lcd-dim);
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-sm);
 }
@@ -355,7 +392,7 @@ button, input, select, textarea {
   gap: 0.4rem;
   font-family: var(--font-mono);
   font-size: 0.52rem;
-  color: var(--badge-live-text);
+  color: var(--gb-lcd-ink);
   font-weight: 400;
 }
 
@@ -841,27 +878,28 @@ button, input, select, textarea {
   align-items: center;
   gap: 0.35rem;
   margin-top: 0.35rem;
-  background-color: var(--bg-canvas);
-  border: 2px solid var(--border-strong);
-  border-radius: 4px;
-  box-shadow: 0 2px 0 var(--border-strong);
-  padding: 0.35rem 0.6rem;
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  border: 2px solid #5C1834;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 #5C1834;
+  padding: 0.4rem 0.8rem;
   font-family: var(--font-mono);
   font-size: 0.55rem;
   font-weight: 400;
-  color: var(--text-primary);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .btn-copy-mini:hover {
-  border-color: var(--accent-primary);
-  color: var(--accent-primary);
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 #5C1834;
 }
 
 .btn-copy-mini:active {
   transform: translateY(2px);
-  box-shadow: none;
+  box-shadow: 0 1px 0 #5C1834;
 }
 
 .copy-feedback-mini {
@@ -926,7 +964,29 @@ button, input, select, textarea {
 
 .btn-submit {
   align-self: flex-start;
-  padding: 0.65rem 1.25rem;
+  padding: 0.65rem 1.4rem;
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  border: 2px solid #5C1834;
+  border-radius: 999px;
+  box-shadow: 0 4px 0 #5C1834;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-submit:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #5C1834;
+}
+
+.btn-submit:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #5C1834;
 }
 
 /* 13. Bento Card 9: Footer */
