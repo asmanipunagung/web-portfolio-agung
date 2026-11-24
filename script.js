@@ -105,4 +105,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 5. Interactive Avatar (Game Boy Camera DMG-01 <-> True Color)
+  const avatarFrame = document.querySelector('.avatar-frame-gameboy');
+  const profileImg = document.getElementById('profile-img');
+  const modeLabel = document.getElementById('avatar-mode-label');
+  let isRetroMode = true;
+
+  if (avatarFrame && profileImg) {
+    avatarFrame.addEventListener('click', () => {
+      isRetroMode = !isRetroMode;
+      profileImg.src = isRetroMode ? 'assets/profile.png' : 'assets/profile-color.jpg';
+      if (modeLabel) modeLabel.textContent = isRetroMode ? 'DMG-01' : 'COLOR';
+    });
+    avatarFrame.addEventListener('mouseenter', () => {
+      profileImg.src = 'assets/profile-color.jpg';
+      if (modeLabel) modeLabel.textContent = 'COLOR';
+    });
+    avatarFrame.addEventListener('mouseleave', () => {
+      if (isRetroMode) {
+        profileImg.src = 'assets/profile.png';
+        if (modeLabel) modeLabel.textContent = 'DMG-01';
+      }
+    });
+  }
 });
