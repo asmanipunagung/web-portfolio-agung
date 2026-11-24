@@ -129,4 +129,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 6. Dynamic Gallery Loader (reads from /api/gallery with graceful fallback)
+  const toyFramesContainer = document.querySelector('.toy-frames-pair');
+  if (toyFramesContainer) {
+    fetch('/api/gallery')
+      .then(res => res.json())
+      .then(items => {
+        if (Array.isArray(items) && items.length > 0) {
+          toyFramesContainer.innerHTML = items.map(item => `
+            <div class="bento-frame">
+              <div class="frame-canvas" style="${item.image ? 'padding:0; overflow:hidden;' : ''}">
+                ${item.image
+                  ? `<img src="${item.image}" alt="${item.title}" style="width:100%; height:100%; object-fit:cover; display:block;" />`
+                  : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="frame-svg"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                     <span class="frame-tag">${item.title}</span>
+                     <span class="frame-sub">${item.subtitle || ''}</span>`
+                }
+              </div>
+              <div class="frame-info">
+                ${(item.specs || []).map(s => `<span class="spec-chip">${s}</span>`).join('')}
+              </div>
+            </div>
+          `).join('');
+        }
+      })
+      .catch(err => {
+        console.debug('Menggunakan fallback galeri statis:', err.message);
+      });
+  }
 });

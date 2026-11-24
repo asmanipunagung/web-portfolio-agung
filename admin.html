@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Galeri — Agung Purwanto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #1e2027;
+      --shell: #2b2e38;
+      --shell-edge: #3e4250;
+      --text: #F1EEE6;
+      --text-muted: #828796;
+      --lcd: #8FA85F;
+      --lcd-ink: #141D0D;
+      --lcd-dim: #3F502B;
+      --btn-magenta: #9B2C5A;
+      --btn-magenta-edge: #5C1834;
+      --btn-magenta-hover: #C23A73;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'VT323', monospace;
+      font-size: 1.35rem;
+      line-height: 1.4;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid var(--shell-edge);
+      padding-bottom: 1rem;
+    }
+
+    .title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .led-power {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #E5483A;
+      box-shadow: 0 0 8px #E5483A;
+      display: inline-block;
+    }
+
+    h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.95rem;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+    .btn-back {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.58rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border: 2px solid var(--shell-edge);
+      border-radius: 999px;
+      transition: all 0.15s ease;
+    }
+    .btn-back:hover {
+      color: #fff;
+      background: var(--shell);
+      border-color: var(--text);
+    }
+
+    .card {
+      background: var(--shell);
+      border: 3px solid var(--shell-edge);
+      border-radius: 12px 12px 36px 12px;
+      box-shadow: 0 6px 0 var(--shell-edge);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.82rem;
+      margin-bottom: 1.25rem;
+      color: var(--lcd);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.5px;
+      color: var(--text);
+    }
+
+    input, textarea {
+      font-family: 'VT323', monospace;
+      font-size: 1.35rem;
+      background: var(--bg);
+      color: var(--text);
+      border: 2px solid var(--shell-edge);
+      border-radius: 4px;
+      padding: 0.65rem 0.85rem;
+      outline: none;
+      box-shadow: inset 0 2px 0 rgba(0,0,0,0.2);
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--btn-magenta);
+    }
+
+    .file-drop-area {
+      border: 2px dashed var(--lcd-dim);
+      background: rgba(143, 168, 95, 0.08);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .file-drop-area input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+
+    .preview-box {
+      margin-top: 1rem;
+      display: none;
+      text-align: center;
+    }
+    .preview-box img {
+      max-width: 240px;
+      max-height: 180px;
+      border-radius: 6px;
+      border: 2px solid var(--shell-edge);
+    }
+
+    .btn-submit {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.65rem;
+      background: var(--btn-magenta);
+      color: #fff;
+      border: 2px solid var(--btn-magenta-edge);
+      border-radius: 999px;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 0 var(--btn-magenta-edge);
+      transition: all 0.1s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-submit:hover {
+      background: var(--btn-magenta-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 5px 0 var(--btn-magenta-edge);
+    }
+    .btn-submit:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 var(--btn-magenta-edge);
+    }
+
+    .feedback {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.58rem;
+      margin-top: 1rem;
+      min-height: 20px;
+    }
+    .feedback.success { color: var(--lcd); }
+    .feedback.error { color: #f87171; }
+
+    /* Gallery Items Table/Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .item-card {
+      background: var(--bg);
+      border: 2px solid var(--shell-edge);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 3px 0 var(--shell-edge);
+    }
+
+    .item-thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #111;
+      display: block;
+    }
+
+    .item-info {
+      padding: 0.75rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .item-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.6rem;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .item-sub {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .btn-delete {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.48rem;
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+      border: 1px solid #ef4444;
+      padding: 0.35rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      align-self: flex-start;
+      margin-top: 6px;
+    }
+    .btn-delete:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-bar">
+      <div class="title-group">
+        <i class="led-power"></i>
+        <h1>STUDIO ADMIN // GALERI KOLEKSI</h1>
+      </div>
+      <a href="/" class="btn-back">&larr; KEMBALI KE PORTOFOLIO</a>
+    </div>
+
+    <!-- Upload Card -->
+    <section class="card">
+      <h2>[ + UNGGAH FOTO KOLEKSI BARU ]</h2>
+      <form id="upload-form">
+        <div class="form-group">
+          <label>PILIH FILE FOTO (JPG / PNG):</label>
+          <div class="file-drop-area" id="drop-area">
+            <span id="file-label">KLIK ATAU TARIK FOTO KE SINI</span>
+            <input type="file" id="file-input" name="photo" accept="image/*" required>
+          </div>
+          <div class="preview-box" id="preview-box">
+            <img id="preview-img" src="" alt="Preview">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="title">JUDUL OBJEK (CONTOH: Kaido House Datsun 510):</label>
+          <input type="text" id="title" name="title" placeholder="Nama model kit / diecast" required>
+        </div>
+
+        <div class="form-group">
+          <label for="subtitle">SUBTITLE / DETAIL (CONTOH: Pro Street • Rim Light):</label>
+          <input type="text" id="subtitle" name="subtitle" placeholder="Deskripsi pendek pencahayaan/detail">
+        </div>
+
+        <div class="form-group">
+          <label for="specs">SPESIFIKASI / LENSA (PISAH DENGAN KOMA):</label>
+          <input type="text" id="specs" name="specs" placeholder="35mm f/2.0 Makro, Mini RGB Tube, Matte Topcoat">
+        </div>
+
+        <div class="form-group">
+          <label for="password">PASSWORD ADMIN / PENGAWAS:</label>
+          <input type="password" id="password" name="password" placeholder="Masukkan password admin" required>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit">
+          [ SIMPAN &amp; TERBITKAN KE GALERI ]
+        </button>
+        <div class="feedback" id="feedback"></div>
+      </form>
+    </section>
+
+    <!-- Current Gallery Management -->
+    <section class="card">
+      <h2>[ DAFTAR KOLEKSI SAAT INI ]</h2>
+      <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 1rem;">
+        Foto di bawah otomatis terpasang pada seksi Galeri Lensa &amp; Kurasi di halaman utama.
+      </p>
+      <div class="gallery-grid" id="gallery-list">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('file-input');
+    const fileLabel = document.getElementById('file-label');
+    const previewBox = document.getElementById('preview-box');
+    const previewImg = document.getElementById('preview-img');
+    const form = document.getElementById('upload-form');
+    const feedback = document.getElementById('feedback');
+    const galleryList = document.getElementById('gallery-list');
+    const pwdInput = document.getElementById('password');
+
+    // Remember password locally for convenience
+    const savedPwd = localStorage.getItem('ap-admin-pwd') || '';
+    if (savedPwd) pwdInput.value = savedPwd;
+
+    // File Preview
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files[0];
+      if (file) {
+        fileLabel.textContent = `✓ ${file.name} (${Math.round(file.size / 1024)} KB)`;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewImg.src = e.target.result;
+          previewBox.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Load Gallery List
+    async function loadGallery() {
+      try {
+        const res = await fetch('/api/gallery');
+        const items = await res.json();
+        renderGalleryList(items);
+      } catch (err) {
+        console.error('Gagal memuat galeri:', err);
+      }
+    }
+
+    function renderGalleryList(items) {
+      if (!items || items.length === 0) {
+        galleryList.innerHTML = '<p style="color: var(--text-muted);">Belum ada koleksi foto.</p>';
+        return;
+      }
+
+      galleryList.innerHTML = items.map(item => `
+        <div class="item-card">
+          ${item.image ? `<img src="/${item.image}" alt="${item.title}" class="item-thumb" />` : `<div class="item-thumb" style="display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:0.8rem;">[TANPA FOTO]</div>`}
+          <div class="item-info">
+            <div>
+              <div class="item-title">${item.title}</div>
+              <div class="item-sub">${item.subtitle || ''}</div>
+              <div style="font-size:1rem;color:var(--lcd);">${(item.specs || []).join(' • ')}</div>
+            </div>
+            <button class="btn-delete" onclick="deleteItem('${item.id}')">[ HAPUS ]</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Submit New Photo
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      feedback.textContent = 'Mengunggah foto...';
+      feedback.className = 'feedback';
+
+      const formData = new FormData(form);
+      localStorage.setItem('ap-admin-pwd', pwdInput.value);
+
+      try {
+        const res = await fetch('/api/gallery', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          feedback.textContent = '✓ Foto berhasil diunggah dan terbit ke galeri!';
+          feedback.className = 'feedback success';
+          form.reset();
+          pwdInput.value = localStorage.getItem('ap-admin-pwd') || '';
+          previewBox.style.display = 'none';
+          fileLabel.textContent = 'KLIK ATAU TARIK FOTO KE SINI';
+          loadGallery();
+        } else {
+          feedback.textContent = `! Gagal: ${data.error || 'Terjadi kesalahan'}`;
+          feedback.className = 'feedback error';
+        }
+      } catch (err) {
+        feedback.textContent = `! Gagal koneksi: ${err.message}`;
+        feedback.className = 'feedback error';
+      }
+    });
+
+    // Delete Item
+    async function deleteItem(id) {
+      const pwd = pwdInput.value || prompt('Masukkan password admin untuk menghapus:');
+      if (!pwd) return;
+
+      if (!confirm('Yakin ingin menghapus item ini dari galeri?')) return;
+
+      try {
+        const res = await fetch(`/api/gallery/${id}`, {
+          method: 'DELETE',
+          headers: { 'x-admin-password': pwd }
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          loadGallery();
+        } else {
+          alert(`Gagal: ${data.error || 'Tidak dapat menghapus item'}`);
+        }
+      } catch (err) {
+        alert(`Error: ${err.message}`);
+      }
+    }
+
+    loadGallery();
+  </script>
+</body>
+</html>
