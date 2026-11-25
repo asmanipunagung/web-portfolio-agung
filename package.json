@@ -2,11 +2,6 @@
   "name": "web-portfolio-agung",
   "version": "1.0.0",
   "description": "Website portofolio pribadi dosen (*lecturer*) dan perekayasa sistem informasi, dipadukan dengan kurasi hobi *toys enthusiast* (diecast/Gunpla).",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "test": "node test-gallery.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/asmanipunagung/web-portfolio-agung.git"
@@ -17,9 +12,5 @@
   "bugs": {
     "url": "https://github.com/asmanipunagung/web-portfolio-agung/issues"
   },
-  "homepage": "https://github.com/asmanipunagung/web-portfolio-agung#readme",
-  "dependencies": {
-    "express": "^5.3.0",
-    "multer": "^2.5.0"
-  }
+  "homepage": "https://github.com/asmanipunagung/web-portfolio-agung#readme"
 }

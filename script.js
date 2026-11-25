@@ -130,10 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Dynamic Gallery Loader (reads from /api/gallery with graceful fallback)
+  // 6. Dynamic Gallery Loader (reads from static gallery.json)
   const toyFramesContainer = document.querySelector('.toy-frames-pair');
   if (toyFramesContainer) {
-    fetch('/api/gallery')
+    fetch('gallery.json')
       .then(res => res.json())
       .then(items => {
         if (Array.isArray(items) && items.length > 0) {
